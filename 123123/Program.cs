@@ -7,10 +7,29 @@ namespace GruppeProjekt
     {
         static void Main(string[] args)
         {
-            
-            UserService UserService = new UserService();
+            bool ProgramRunning = true;
+            while (ProgramRunning == true)
+            {
+               
+                
+                
+                
+                
+                
+                
+                UserService UserService = new UserService();
+                UserService.RegisterBruger();
 
-            UserService.RegisterBruger();
+
+
+
+
+
+
+
+            }
+
+           
 
 
 
