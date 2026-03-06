@@ -23,10 +23,10 @@ namespace _123123
                 Console.WriteLine("");
                 Console.WriteLine("1)  Register bruger");
                 Console.WriteLine("2)  Vis regisretet brugere");
-                Console.WriteLine("2)  Information på Lokaler");
-                Console.WriteLine("2)  Status på lokaler");
-                Console.WriteLine("3)  Book et lokale");
-                Console.WriteLine("4)  Log ud");
+                Console.WriteLine("3)  Information på Lokaler");
+                Console.WriteLine("4)  Status på lokaler");
+                Console.WriteLine("5)  Book et lokale");
+                Console.WriteLine("6)  Sluk programmet");
 
                 string input = Console.ReadLine().ToLower();
 
@@ -44,6 +44,20 @@ namespace _123123
                         break;
 
                     case "3":
+                        Console.Clear();
+
+                        break;
+                    case "4":
+                        Console.Clear();
+                       
+                        break;
+
+                    case "5":
+                        Console.Clear();
+                       
+                        break;
+
+                    case "6":
                         Console.Clear();
 
                         break;

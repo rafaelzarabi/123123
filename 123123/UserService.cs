@@ -20,8 +20,7 @@ namespace _123123
             string Username = Console.ReadLine().ToLower();
 
             Console.Write("Indtast Dit adgangkode: ");
-            String Password = Console.ReadLine().ToLower();
-
+            string Password = Console.ReadLine().ToLower();
 
             //automatisk tilføjer unikt id til UserID, +1 fordi ellers starer den ved nul
             int UserID = _usersList.Count + 1;
@@ -32,13 +31,24 @@ namespace _123123
         }
 
 
-        public void ShowUserList()   
-     
+        public void ShowUserList()        
         {
+            Console.Clear();
+            Console.WriteLine("===============================================".PadLeft(50));
+            Console.WriteLine("                ALLE BRUGERE                   ".PadLeft(50));
+            Console.WriteLine("===============================================".PadLeft(50));
+
             foreach (var user in _usersList)       
             {
-                Console.WriteLine($"{user._UserID}{user._UserName}");
+                Console.WriteLine($"Navn: {user._UserName}, ID: {user._UserID}");   
+                Console.WriteLine("");
             }
+
+            Console.WriteLine("");
+            Console.WriteLine("Tryk på en vilkårlig tast for at vende tilbage til hovedmenuen....");
+            Console.ReadKey();
+        
+        
         }
        
     
