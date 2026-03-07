@@ -66,7 +66,7 @@ namespace _123123
             _usersList.Add(NewUser);
         }
 
-        public bool Login()
+        public bool LoginBool()
         {
             if (_usersList.Count == 0)
             {
@@ -96,8 +96,8 @@ namespace _123123
                     return true;
                 }       
             }
-            Console.WriteLine("Forkert brugernavn eller adgangkode... Prøv venligst igen");
-            return false;
+           return false;
+            
         }
 
         

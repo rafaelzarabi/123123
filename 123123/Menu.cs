@@ -9,10 +9,8 @@ namespace _123123
     {
         UserService userService = new UserService();
 
-        public void LogInMenu()
+        public bool LogInMenuBool()
         {
-
-
             Console.WriteLine("================================================");
             Console.WriteLine("                     Log In                     ");
             Console.WriteLine("================================================");
@@ -20,7 +18,7 @@ namespace _123123
             Console.WriteLine("1)  Log ind ");
             Console.WriteLine("2)  Register bruger");
             Console.WriteLine("3)  Se alle registeret brugere");
-            Console.WriteLine("3)  Afslut programmet");
+            Console.WriteLine("4)  Afslut programmet");
 
             string input = Console.ReadLine().ToLower();
 
@@ -28,9 +26,8 @@ namespace _123123
             {
                 case "1":
                     Console.Clear();
-                    userService.Login();
-                    break;
-
+                    return userService.LoginBool();
+                 
                 case "2":
                     Console.Clear();
                     userService.RegisterUser();
@@ -45,6 +42,7 @@ namespace _123123
                     userService.LogOut();
                     break;
             }
+            return false;
         }
 
         public void MainMenu()

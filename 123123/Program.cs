@@ -16,19 +16,21 @@ namespace _123123
             bool LogIn = false;
 
 
+            
+
             while (ProgramRunning == true)
             {
-                while (LogIn == false)
+                while (menu.LogInMenuBool() == false)
                 {
-                    Console.Clear();
-                    menu.LogInMenu();
-                }
 
-                while (LogIn == true)
-                {
+                    Console.Clear();
+                    //Vi har en stafet med bool metoder fra main, til loginmenu, til login
+                    menu.LogInMenuBool();
+                }        
                     Console.Clear();
                     menu.MainMenu();
-                }
+                
+                
 
                 
 
