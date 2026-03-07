@@ -7,12 +7,12 @@ namespace _123123
 {
     internal class Menu
     {
-        
+        UserService userService = new UserService();
 
         public void LogInMenu()
         {
-            UserService userService = new UserService();
-            List<User> userlist = new List<User>();
+            
+            
 
 
             Console.WriteLine("================================================");
@@ -51,7 +51,7 @@ namespace _123123
 
         public void MainMenu()
         {
-            UserService userService = new UserService();
+            
             Console.Clear();
             Console.WriteLine("===============================================");
             Console.WriteLine("                   HOVEDMENU                   ");
