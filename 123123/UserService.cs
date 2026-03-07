@@ -7,7 +7,7 @@ namespace _123123
 {
     internal class UserService
     {
-        //listen her gemmer alle Users
+        //listen her viser alle Users
         private List<User> _usersList = new List<User>();
 
         public void RegisterBruger()
@@ -29,24 +29,31 @@ namespace _123123
             User NewUser = new User(Username, Password, UserID);
             _usersList.Add(NewUser);
         }
-
-        public void Login(string username, string password))
+       
+        public void Login(string Username, string Password)
         {
 
+            foreach (var user in _usersList)
+            {
 
 
 
+                if (user._Username == Username && user._Password == Password)
+                {
+                    Console.WriteLine("Login succesfuldt!");
+                    return; // Stop metoden her, da vi har fundet brugeren
+                }
+
+
+
+
+
+
+
+            }    
         }
 
-
-
-
-
-
-
-
-
-
+        
 
         public void ShowUserList()        
         {
@@ -57,7 +64,7 @@ namespace _123123
 
             foreach (var user in _usersList)       
             {
-                Console.WriteLine($"Navn: {user._UserName}, ID: {user._UserID}");   
+                Console.WriteLine($"Navn: {user._Username}, ID: {user._UserID}");   
                 Console.WriteLine("");
             }
 
