@@ -32,39 +32,43 @@ namespace _123123
 
         public void Login()
         {
-            bool login = false;
             
-            while (login = false) 
-            { 
+            
+            
+            
 
    
-                Console.WriteLine("===============================================".PadLeft(50));
-                Console.WriteLine("                    Log in                     ".PadLeft(50));        
-                Console.WriteLine("===============================================".PadLeft(50));
-
-                Console.Write("Indtast Dit brugernavn: ");
-                string Username = Console.ReadLine().ToLower();
-
-                Console.Write("Indtast Dit adgangkode: ");
-                string Password = Console.ReadLine().ToLower();
+               
+            Console.WriteLine("===============================================".PadLeft(50));
+            Console.WriteLine("                    Log in                     ".PadLeft(50));        
+            Console.WriteLine("===============================================".PadLeft(50));
 
             
-                foreach (User user in _usersList)
+            Console.Write("Indtast Dit brugernavn: ");
+            string Username = Console.ReadLine().ToLower();
+
+            Console.Write("Indtast Dit adgangkode: ");
+            string Password = Console.ReadLine().ToLower();
+
+            
+            
+            foreach (User user in _usersList)
+            {
+                if (user._Username == Username && user._Password == Password)
                 {
-
-                    if (user._Username == Username && user._Password == Password)
-                    {
-                        Console.WriteLine("Adgang givet");
-                        Thread.Sleep(1000);
-                        login = true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Forkert brugernavn eller adgangkode... Prøv venligst igen");
-                    }
+                    Console.WriteLine("Adgang givet");
+                    Thread.Sleep(1000);
                 }
-
+                   
+                else 
+                {
+                    Console.WriteLine("Forkert brugernavn eller adgangkode... Prøv venligst igen");
+                }
+                
             }
+
+
+            
             
         }
 
