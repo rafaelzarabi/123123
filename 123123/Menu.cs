@@ -11,8 +11,6 @@ namespace _123123
 
         public void LogInMenu()
         {
-            
-            
 
 
             Console.WriteLine("================================================");
