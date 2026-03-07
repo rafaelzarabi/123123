@@ -31,6 +31,7 @@ namespace _123123
              
                 }
             }
+
             while (Lastname.Length < 2)
             {
                 // Trim fjerner mellemrum
@@ -56,18 +57,13 @@ namespace _123123
                     Console.WriteLine("du skal indtaste en gyldig adgangskode");
                 }
             }
-            
-
-
+   
             //automatisk tilføjer unikt id til UserID, +1 fordi ellers starer den ved 0
             int UserID = _usersList.Count + 1;
 
             //opretter en ny bruger og tilføjer den til _userslisten
             User NewUser = new User(Firstname, Lastname, Password, UserID);
             _usersList.Add(NewUser);
-
-       
-
         }
 
         public bool Login()
@@ -113,10 +109,11 @@ namespace _123123
             Console.WriteLine("                ALLE BRUGERE                   ".PadLeft(50));
             Console.WriteLine("===============================================".PadLeft(50));
 
-            foreach (var user in _usersList)       
+            foreach (User user in _usersList)       
             {
                 Console.WriteLine($"Navn: {user._Firstname} {user._Lastname}, ID: {user._UserID}");   
                 Console.WriteLine("");
+                Console.ReadKey();
             }
 
             Console.WriteLine("");

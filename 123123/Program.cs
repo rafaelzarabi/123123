@@ -18,7 +18,7 @@ namespace _123123
             {
                 while (LogIn == false)
                 {
-                    Console.Clear();
+                    
                     menu.LogInMenu();
                 }
 

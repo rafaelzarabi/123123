@@ -7,7 +7,7 @@ namespace _123123
 {
     internal class Menu
     {
-        public string Name { get; private set; }
+        
 
         public void LogInMenu()
         {
