@@ -72,7 +72,7 @@ namespace _123123
 
                 case "2":
                     Console.Clear();
-                    // lav en nyt objekt der kalder på klassen oppe i toppen uden for metoden, og kald metoden fra klassen her: NEEGA
+                    // lav en nyt objekt der kalder på klassen oppe i toppen uden for denne metoden, og kald metoden fra klassen her: NEEGA
                     break;
 
                 case "3":
