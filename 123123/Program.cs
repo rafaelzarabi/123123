@@ -10,12 +10,17 @@ namespace _123123
         {
             bool ProgramRunning = true;
 
+            // kalder klassen, så jeg kan bruge den i main
+            Menu menu = new Menu();
 
             while (ProgramRunning == true)
             {
+                
+                menu.LogInMenu();
 
+                menu.MainMenu();
 
-             
+                
 
                
 
