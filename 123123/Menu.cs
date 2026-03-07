@@ -35,7 +35,7 @@ namespace _123123
 
                 case "2":
                     Console.Clear();
-                    userService.ShowUserList();
+                    userService.RegisterUser();
                     break;
                 case "3":
                     Console.Clear();

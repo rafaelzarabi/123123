@@ -10,7 +10,7 @@ namespace _123123
         //listen her viser alle Users
         private List<User> _usersList = new List<User>();
 
-        public void RegisterBruger()
+        public void RegisterUser()
         {
             Console.WriteLine("===============================================".PadLeft(50));
             Console.WriteLine("               REGISTER BRUGER                 ".PadLeft(50));
