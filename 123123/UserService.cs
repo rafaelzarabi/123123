@@ -30,15 +30,15 @@ namespace _123123
             _usersList.Add(NewUser);
         }
 
-        public void Login()
+        public bool Login()
         {
-            
-            
-            
-            
+            if (_usersList.Count == 0)
+            {
+                Console.WriteLine("Du skal oprette en bruger først...\n Tryk på en vilkårlig tast for at forsætte");
+                Console.ReadKey();
+                return false;
+            }
 
-   
-               
             Console.WriteLine("===============================================".PadLeft(50));
             Console.WriteLine("                    Log in                     ".PadLeft(50));        
             Console.WriteLine("===============================================".PadLeft(50));
@@ -51,25 +51,17 @@ namespace _123123
             string Password = Console.ReadLine().ToLower();
 
             
-            
             foreach (User user in _usersList)
             {
                 if (user._Username == Username && user._Password == Password)
                 {
                     Console.WriteLine("Adgang givet");
                     Thread.Sleep(1000);
-                }
-                   
-                else 
-                {
-                    Console.WriteLine("Forkert brugernavn eller adgangkode... Prøv venligst igen");
-                }
-                
+                    return true;
+                }       
             }
-
-
-            
-            
+            Console.WriteLine("Forkert brugernavn eller adgangkode... Prøv venligst igen");
+            return false;
         }
 
         

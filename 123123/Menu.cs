@@ -21,6 +21,7 @@ namespace _123123
 
             Console.WriteLine("1)  Log ind ");
             Console.WriteLine("2)  Register bruger");
+            Console.WriteLine("3)  Se alle registeret brugere");
             Console.WriteLine("3)  Afslut programmet");
 
             string input = Console.ReadLine().ToLower();
@@ -36,8 +37,12 @@ namespace _123123
                     Console.Clear();
                     userService.ShowUserList();
                     break;
-
                 case "3":
+                    Console.Clear();
+                    userService.ShowUserList();
+                    break;
+
+                case "4":
                     Console.Clear();
                     userService.LogOut();
                     break;
