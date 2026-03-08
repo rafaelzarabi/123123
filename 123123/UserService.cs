@@ -41,11 +41,11 @@ namespace _123123
                 if (Lastname.Any(char.IsDigit) || Lastname == "")
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("fejl... Du skal indtase et Efter med mindst 2 bogstaver, og ingen tal\nTryk på en vilkårlig tast for at vende tilbage til login");
+                    Console.WriteLine("fejl... Du skal indtase et Efternavn med mindst 2 bogstaver, og ingen tal");
                 }
             }
 
-            while (Password.Length < 5)
+            while (Password.Length < 5 || Password == "")
             {
                 // Trim fjerner mellemrum
                 Console.Write("Indtast din adgangkode. Mindst 5 tegn: ");
@@ -54,7 +54,7 @@ namespace _123123
                 if (Password == "")
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("du skal indtaste en gyldig adgangskode");
+                    Console.WriteLine("Fejl... du skal indtaste en adgangskode med mindst 5 tegn");
                 }
             }
 
