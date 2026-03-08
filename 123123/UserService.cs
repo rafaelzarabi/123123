@@ -20,18 +20,19 @@ namespace _123123
             Console.WriteLine("               REGISTER BRUGER                 ");
             Console.WriteLine("===============================================");
 
-            while (Firstname.Length < 2)
+            while (Firstname.Length < 2 || Firstname.Any(char.IsDigit))
             {
                 Console.Write("Indtast dit Fornavn. Minimum 2 bogstaver:");
                 Firstname = Console.ReadLine().ToLower().Trim();
 
                 if (Firstname.Any(char.IsDigit) || Firstname == "")
                 {
+                    Console.WriteLine("");
                     Console.WriteLine("fejl... Du skal indtase et navn med mindst 2 bogstaver, og ingen tal");
                 }
             }
 
-            while (Lastname.Length < 2)
+            while (Lastname.Length < 2 || Firstname.Any(char.IsDigit))
             {
                 // Trim fjerner mellemrum
                 Console.Write("Indtast dit efternavn. Minimum 2 bogstaver: ");
