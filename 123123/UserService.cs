@@ -25,7 +25,7 @@ namespace _123123
                 Console.Write("Indtast dit Fornavn. Minimum 2 bogstaver:");
                 Firstname = Console.ReadLine().ToLower().Trim();
 
-                if (Firstname.Any(char.IsDigit) && Firstname == "")
+                if (Firstname.Any(char.IsDigit) || Firstname == "")
                 {
                     Console.WriteLine("fejl... Du skal indtase et navn med mindst 2 bogstaver, og ingen tal");
                 }
@@ -37,7 +37,7 @@ namespace _123123
                 Console.Write("Indtast dit efternavn. Minimum 2 bogstaver: ");
                 Lastname = Console.ReadLine().ToLower().Trim();
 
-                if (Lastname.Any(char.IsDigit) && Lastname == "")
+                if (Lastname.Any(char.IsDigit) || Lastname == "")
                 {
                     Console.WriteLine("");
                     Console.WriteLine("fejl... Du skal indtase et Efter med mindst 2 bogstaver, og ingen tal\nTryk på en vilkårlig tast for at vende tilbage til login");
