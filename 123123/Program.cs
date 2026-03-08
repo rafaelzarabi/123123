@@ -28,8 +28,9 @@ namespace _123123
             }
         }
 
-           public void CloseProgram()
-            {
+
+        public void CloseProgram()
+        {
             Console.WriteLine("Er du sikker på du vil afslutte programmet?\n At afslutte programmet fjerne af indtastet data");
             Console.WriteLine("1) ja");
             Console.WriteLine("2) Nej");
@@ -41,18 +42,8 @@ namespace _123123
                     Environment.Exit(0);
                     break;
                 case '2':
-                    
-                    break;
-            }                
-                        
+                break;
             }
-
-
-
-
-
-            
-            
-        
+        }
     }
 }

@@ -35,13 +35,10 @@ namespace _123123
                     Console.Clear();
                     userService.ShowUserList();
                     break;
-
                 case '4':
                     Console.Clear();
                     program.CloseProgram();
                         break;
-
-
             }
             return false;
         }
