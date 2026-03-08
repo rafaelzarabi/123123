@@ -21,20 +21,38 @@ namespace _123123
                 {
                     Console.Clear();
                     LogIn = menu.LogInMenuBool();   // Vi har en return stafet med bool fra loginBool()-->loginMenuBool-->Main
-                }        
-                   
-               Console.Clear();   
-               LogIn = menu.MainMenuBool();      // Vi har en return stafet med bool fra  LogOut()-->mainMenu()-->Main()    
+                }
+
+                Console.Clear();
+                LogIn = menu.MainMenuBool();      // Vi har en return stafet med bool fra  LogOut()-->mainMenu()-->Main()    
+            }
+        }
+
+           public void CloseProgram()
+            {
+            Console.WriteLine("Er du sikker på du vil afslutte programmet?\n At afslutte programmet fjerne af indtastet data");
+            Console.WriteLine("1) ja");
+            Console.WriteLine("2) Nej");
+
+            ConsoleKeyInfo input = Console.ReadKey();
+            switch (input.KeyChar)
+            {
+                case '1':
+                    Environment.Exit(0);
+                    break;
+                case '2':
+                    
+                    break;
+            }                
+                        
             }
 
-           
-
 
 
 
 
             
             
-        }
+        
     }
 }

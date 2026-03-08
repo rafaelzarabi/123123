@@ -35,7 +35,7 @@ namespace _123123
             {
                 // Trim fjerner mellemrum
                 Console.Write("Indtast dit efternavn. Minimum 2 bogstaver: ");
-                 Lastname = Console.ReadLine().ToLower().Trim();
+                Lastname = Console.ReadLine().ToLower().Trim();
 
                 if (Lastname.Any(char.IsDigit) && Lastname == "")
                 {
@@ -56,7 +56,7 @@ namespace _123123
                     Console.WriteLine("du skal indtaste en gyldig adgangskode");
                 }
             }
-   
+
             //automatisk tilføjer unikt id til UserID, +1 fordi ellers starer den ved 0
             int UserID = _usersList.Count + 1;
 
@@ -74,7 +74,7 @@ namespace _123123
             }
 
             Console.WriteLine("===============================================".PadLeft(50));
-            Console.WriteLine("                    Log in                     ".PadLeft(50));        
+            Console.WriteLine("                    Log in                     ".PadLeft(50));
             Console.WriteLine("===============================================".PadLeft(50));
 
             Console.Write("Indtast Dit Fornavn: ");
@@ -82,7 +82,7 @@ namespace _123123
 
             Console.Write("Indtast Dit adgangkode: ");
             string Password = Console.ReadLine().ToLower();
- 
+
             foreach (User user in _usersList)
             {
                 if (user._Firstname == Firstname && user._Password == Password)
@@ -90,22 +90,22 @@ namespace _123123
                     Console.WriteLine("Adgang givet");
                     Thread.Sleep(1000);
                     return true;
-                }       
+                }
             }
-           return false;
+            return false;
         }
 
-        public void ShowUserList()        
+        public void ShowUserList()
         {
             Console.Clear();
             Console.WriteLine("===============================================".PadLeft(50));
             Console.WriteLine("                ALLE BRUGERE                   ".PadLeft(50));
             Console.WriteLine("===============================================".PadLeft(50));
 
-            foreach (User user in _usersList)       
+            foreach (User user in _usersList)
             {
                 Console.WriteLine("");
-                Console.WriteLine($"Navn: {user._Firstname} {user._Lastname}, ID: {user._UserID}");   
+                Console.WriteLine($"Navn: {user._Firstname} {user._Lastname}, ID: {user._UserID}");
                 Console.WriteLine("");
             }
 
@@ -113,23 +113,22 @@ namespace _123123
             Console.WriteLine("Tryk på en vilkårlig tast for at vende tilbage til hovedmenuen....");
             Console.ReadKey();
         }
-       
+
         public bool LogOutBool()
         {
-            Console.WriteLine("Er du sikker på du gerne vil log ud? ( Ja / Nej )");
-            string svar = Console.ReadLine().ToLower();
-            if (svar == "ja")
+            Console.WriteLine("Er du sikker på du gerne vil logge ud? ( Ja / Nej )");
+            Console.WriteLine("1) ja");
+            Console.WriteLine("2) Nej");
+            ConsoleKeyInfo svar = Console.ReadKey();
+
+            switch (svar.KeyChar)
             {
-                return false;
+                case '1':
+                    return false;
+                case '2':
+                    return true;
             }
-                return true; 
-
+            return true;
         }
-          
-        
-
-
-
-        
     }
 }

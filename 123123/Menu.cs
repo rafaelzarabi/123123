@@ -8,6 +8,7 @@ namespace _123123
     internal class Menu
     {
         UserService userService = new UserService();
+        Program program = new Program();
 
         public bool LogInMenuBool()
         {
@@ -37,8 +38,10 @@ namespace _123123
 
                 case '4':
                     Console.Clear();
-                    return userService.LogOutBool();
-                    
+                    program.CloseProgram();
+                        break;
+
+
             }
             return false;
         }
