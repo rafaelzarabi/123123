@@ -19,23 +19,23 @@ namespace _123123
             Console.WriteLine("3)  Se alle registeret brugere");
             Console.WriteLine("4)  Afslut programmet");
 
-            string input = Console.ReadLine().ToLower();
+            ConsoleKeyInfo keyinfo = Console.ReadKey();
 
-            switch (input)
+            switch (keyinfo.KeyChar)
             {
-                case "1":
+                case '1':
                     Console.Clear();
                     return userService.LoginBool();
-                case "2":
+                case '2':
                     Console.Clear();
                     userService.RegisterUser();
                     break;
-                case "3":
+                case '3':
                     Console.Clear();
                     userService.ShowUserList();
                     break;
 
-                case "4":
+                case '4':
                     Console.Clear();
                     return userService.LogOutBool();
                     

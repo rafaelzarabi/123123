@@ -20,11 +20,11 @@ namespace _123123
                 while (LogIn == false)
                 {
                     Console.Clear();
-                    LogIn = menu.LogInMenuBool();   // Vi har en stafet med bool fra loginBool()-->loginMenuBool-->Main
+                    LogIn = menu.LogInMenuBool();   // Vi har en return stafet med bool fra loginBool()-->loginMenuBool-->Main
                 }        
                    
                Console.Clear();   
-               LogIn = menu.MainMenuBool();      // Vi har en stafet med bool fra  LogOut()-->mainMenu()-->Main()    
+               LogIn = menu.MainMenuBool();      // Vi har en return stafet med bool fra  LogOut()-->mainMenu()-->Main()    
             }
 
            
