@@ -15,13 +15,16 @@ namespace _123123
             string Firstname = "";
             string Lastname = "";
             string Password = "";
-
-            Console.WriteLine("===============================================");
-            Console.WriteLine("               REGISTER BRUGER                 ");
-            Console.WriteLine("===============================================");
+          
+            
 
             while (Firstname.Length < 2 || Firstname.Any(char.IsDigit))
+
             {
+                Console.WriteLine("===============================================");
+                Console.WriteLine("               REGISTER BRUGER                 ");
+                Console.WriteLine("===============================================");
+                Console.WriteLine("");
                 Console.Write("Indtast dit Fornavn. Minimum 2 bogstaver:");
                 Firstname = Console.ReadLine().ToLower().Trim();
 
@@ -29,32 +32,48 @@ namespace _123123
                 {
                     Console.WriteLine("");
                     Console.WriteLine("fejl... Du skal indtase et navn med mindst 2 bogstaver, og ingen tal");
+                    Thread.Sleep(1000);
+                    Console.Clear();
                 }
+                Console.Clear();
             }
 
-            while (Lastname.Length < 2 || Firstname.Any(char.IsDigit))
+            while ( Lastname == "" || Lastname.Length < 2 || Lastname.Any(char.IsDigit ))
             {
                 // Trim fjerner mellemrum
+                Console.WriteLine("===============================================");
+                Console.WriteLine("               REGISTER BRUGER                 ");
+                Console.WriteLine("===============================================");
+                Console.WriteLine("");
                 Console.Write("Indtast dit efternavn. Minimum 2 bogstaver: ");
                 Lastname = Console.ReadLine().ToLower().Trim();
 
-                if (Lastname.Any(char.IsDigit) || Lastname == "")
+                if (Lastname.Any(char.IsDigit) || Lastname == "" || Lastname.Length < 2)
                 {
                     Console.WriteLine("");
                     Console.WriteLine("fejl... Du skal indtase et Efternavn med mindst 2 bogstaver, og ingen tal");
+                    Thread.Sleep(1000);
+                    Console.Clear();
                 }
+                Console.Clear();
             }
 
             while (Password.Length < 5 || Password == "")
             {
                 // Trim fjerner mellemrum
+                Console.WriteLine("===============================================");
+                Console.WriteLine("               REGISTER BRUGER                 ");
+                Console.WriteLine("===============================================");
+                Console.WriteLine("");
                 Console.Write("Indtast din adgangkode. Mindst 5 tegn: ");
                 Password = Console.ReadLine().ToLower().Trim();
 
-                if (Password == "")
+                if (Password == "" || Password.Length < 5 )
                 {
                     Console.WriteLine("");
                     Console.WriteLine("Fejl... du skal indtaste en adgangskode med mindst 5 tegn");
+                    Thread.Sleep(1000);
+                    Console.Clear();
                 }
             }
 
