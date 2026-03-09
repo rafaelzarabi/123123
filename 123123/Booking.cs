@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace _123123
 {
     internal class Booking
     {
         // Liste over alle bookinger
-        public static List<string> bookings = new List<string>();
+        public static List<Booking> bookings = new List<Booking>();
 
         public void BookRoom()
         {
@@ -45,28 +46,35 @@ namespace _123123
             Rooms selectedRoom = rooms[roomChoice];
 
             Console.Clear();
-            Console.WriteLine("Vælg tidsrum:");
-            Console.WriteLine("1) Morgen".PadRight(25) + "08:00 - 10:00");
-            Console.WriteLine("2) Formiddag".PadRight(25) + "10:00 - 12:00");
-            Console.WriteLine("3) Eftermiddag".PadRight(25) + "12:00 - 14:00");
+            Console.WriteLine("Vælg dag:");
+            Console.WriteLine("1) Mandag");
+            Console.WriteLine("2) Tirsdag");
+            Console.WriteLine("3) Onsdag");
+            Console.WriteLine("4) Torsdag");
+            Console.WriteLine("5) Fredag");
 
-            string timeInput;
-            string timeSlot = "";
+            Day day;
 
             while (true)
             {
-                timeInput = Console.ReadLine();
+                string dayInput = Console.ReadLine();
 
-                switch (timeInput)
+                switch (dayInput)
                 {
                     case "1":
-                        timeSlot = "Morgen";
+                        day = Day.Mandag;
                         break;
                     case "2":
-                        timeSlot = "Formiddag";
+                        day = Day.Tirsdag;
                         break;
                     case "3":
-                        timeSlot = "Eftermiddag";
+                        day = Day.Onsdag;
+                        break;
+                    case "4":
+                        day = Day.Torsdag;
+                        break;
+                    case "5":
+                        day = Day.Fredag;
                         break;
                     default:
                         Console.WriteLine("Ugyldigt valg, prøv igen:");
@@ -76,7 +84,39 @@ namespace _123123
                 break;
             }
 
-            string bookingText = $"Lokale {selectedRoom.Name} er booket i {timeSlot}";
+            Console.Clear();
+            Console.WriteLine("Vælg tidsrum:");
+            Console.WriteLine("1) Morgen".PadRight(25) + "08:00 - 10:00");
+            Console.WriteLine("2) Formiddag".PadRight(25) + "10:00 - 12:00");
+            Console.WriteLine("3) Eftermiddag".PadRight(25) + "12:00 - 14:00");
+
+            string timeInput;
+            TimeSlot timeSlot;
+
+            while (true)
+            {
+                timeInput = Console.ReadLine();
+
+                switch (timeInput)
+                {
+                    case "1":
+                        timeSlot = TimeSlot.Morgen;
+                        break;
+                    case "2":
+                        timeSlot = TimeSlot.Formiddag;
+                        break;
+                    case "3":
+                        timeSlot = TimeSlot.Eftermiddag;
+                        break;
+                    default:
+                        Console.WriteLine("Ugyldigt valg, prøv igen:");
+                        continue;
+                }
+
+                break;
+            }
+
+            string bookingText = $"Lokale {selectedRoom.Name} er booket {day} i {timeSlot}";
 
             Console.Clear();
             Console.WriteLine("Bekræft booking:");
@@ -89,7 +129,8 @@ namespace _123123
 
             if (confirm == "1")
             {
-                bookings.Add(bookingText);
+                Booking newBooking = new Booking();
+                bookings.Add(newBooking);
 
                 Console.Clear();
                 Console.WriteLine("Booking gennemført!");
@@ -103,6 +144,13 @@ namespace _123123
 
             Console.WriteLine("\nTryk på en tast for at fortsætte...");
             Console.ReadKey();
+
         }
+            
+            public void CancelBooking()
+            {
+                Console.WriteLine("Booking anulleret.");
+            }
+        
     }
 }
