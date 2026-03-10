@@ -21,6 +21,8 @@ namespace _123123
         public static List<Rooms> GetLokaler()
         {
             List<Rooms> rooms = new List<Rooms>();
+
+           
     
             rooms.Add(new Rooms("A", 70, true, true));
             rooms.Add(new Rooms("B", 40, true, false));

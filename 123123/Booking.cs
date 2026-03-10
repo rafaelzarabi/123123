@@ -7,23 +7,51 @@ namespace _123123
     internal class Booking
     {
         // Hvad indeholder en booking? Den er tilknyttet en USER, har et navn og et tidspunkt på dagen 1, 2, 3 = morgen, middag, eftermiddag
-        public User _User { get; private set; }
-        public string _Name { get; private set; }
+        public string _NameOfTheBooker { get; private set; }
+        public string _TimeOfDay { get; private set; }
         public int _TimeSlot { get; private set; }
 
 
         public static List<string> bookings = new List<string>();
+        List<Rooms> alleLokaler = Rooms.GetLokaler();
+       
         
-
         // constructor - til når vi skal oprette et booking objekt, som indeholder et NAME og TIMESLOT
-        public Booking(User User, string Name, int Timeslot)
+        public Booking(string NameOfTheBooker, string TimeOfDay, int Timeslot)
         {
-            _User = User;
-             _Name = Name;
+            _NameOfTheBooker = NameOfTheBooker;
+            _TimeOfDay = TimeOfDay;
             _TimeSlot = Timeslot;
         }
-       
 
+        public void BookRoomLangberg()
+        {
+            Console.WriteLine("Indtast navnet på facilitatoren af mødet ");
+            string NameOfTheBooker = Console.ReadLine().ToLower().Trim();
+            
+            
+            foreach (var rooms in alleLokaler)
+            { 
+                Console.WriteLine($"Lokale: {rooms.Name}. Antal siddepladser: {rooms.SeatsAmount}. Har rummet en projektor? {rooms.HasProjector}. Har rummet et Whiteboard? {rooms.HasWhiteboard}");
+
+                string RoomName = rooms.Name;
+
+
+        }
+
+            Console.WriteLine("Vælg det lokale du gerne vil rersaver ");
+            Console.WriteLine("1) lokale A ");
+            Console.WriteLine("1) lokale b ");
+            Console.WriteLine("1) lokale c ");
+           
+           
+        
+        
+        
+        
+        
+        
+        }
 
         public void BookRoom()
         {
@@ -35,6 +63,7 @@ namespace _123123
             {
                 Console.WriteLine($"{i + 1}) Lokale {rooms[i].Name}");
             }
+
 
             int roomChoice;
 
@@ -123,7 +152,7 @@ namespace _123123
         }
 
  
-
+       
 
 
 
