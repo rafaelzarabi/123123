@@ -7,6 +7,7 @@ namespace _123123
 {
     internal class Booking
     {
+
         // Hvad indeholder en booking? Den er tilknyttet en USER, har et navn og et tidspunkt på dagen 1, 2, 3 = morgen, middag, eftermiddag
         public string _NameOfTheBooker { get; private set; }
         public string _roomname { get; private set; }
@@ -81,25 +82,24 @@ namespace _123123
 			Console.WriteLine("5) Fredag");
 
 			string dagInput = Console.ReadLine();
-
-            Day valgtDag;
+			string valgtDag = "";
 
 			switch (dagInput)
 			{
 				case "1":
-                    valgtDag = Day.Mandag;
+					valgtDag = "Mandag";
 					break;
 				case "2":
-                    valgtDag = Day.Tirsdag;
+					valgtDag = "Tirsdag";
 					break;
 				case "3":
-                    valgtDag = Day.Onsdag;
+					valgtDag = "Onsdag";
 					break;
 				case "4":
-                    valgtDag = Day.Torsdag;
+					valgtDag = "Torsdag";
 					break;
 				case "5":
-                    valgtDag = Day.Fredag;
+					valgtDag = "Fredag";
 					break;
 
 				default:
@@ -116,18 +116,18 @@ namespace _123123
 			Console.WriteLine("3) Eftermiddage 12:00 - 14:00");
 
 			string timeInput = Console.ReadLine();
-            TimeSlot timeSlot;
+			string timeSlot = "";
 
-            switch (timeInput)
+			switch (timeInput)
 			{
 				case "1":
-                    timeSlot = TimeSlot.Morgen;
+					timeSlot = "Morgen";
 					break;
 				case "2":
-                    timeSlot = TimeSlot.Formiddag;
+					timeSlot = "Formiddag";
 					break;
 				case "3":
-                    timeSlot = TimeSlot.Eftermiddag;
+					timeSlot = "Eftermiddag";
 					break;
 
 				default:
