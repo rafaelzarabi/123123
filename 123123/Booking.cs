@@ -41,18 +41,18 @@ namespace _123123
 
             _roomname = Console.ReadLine();
 
-            switch (Roomname)
+            switch (_roomname)
             {
                 case "1":
-                    Roomname = lokaler[0].Name;
+                    _roomname = lokaler[0].Name;
                     break;
      
                 case "2":
-                    Roomname = lokaler[1].Name;
+                    _roomname = lokaler[1].Name;
 
                     break;
                 case "3":
-                    Roomname = lokaler[2].Name;
+                    _roomname = lokaler[2].Name;
 
                     break;
 

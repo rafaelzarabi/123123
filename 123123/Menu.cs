@@ -13,9 +13,6 @@ namespace _123123
 
 
         public bool LogInMenuBool()
-      
-
-
         {
             Console.WriteLine("================================================");
             Console.WriteLine("                     Log In                     ");
