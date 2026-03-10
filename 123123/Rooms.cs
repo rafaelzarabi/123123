@@ -56,17 +56,17 @@ namespace _123123
 
 					foreach (string booking in Booking.bookings) //looper over om de forskellige dage i tidsrum er bookede. Hvis det er booked, bliver bools nu true
 					{
-						if (booking == "Lokale A er booket i " + tider[tid])
+						if (booking == "Lokale A er booket i " + tider[tid] + " på " + dage[dag])
 						{
 							lokaleA = true;
 						}
 
-						if (booking == "Lokale B er booket i " + tider[tid])
+						if (booking == "Lokale B er booket i " + tider[tid] + " på " + dage[dag])
 						{
 							lokaleB = true;
 						}
 
-						if (booking == "Lokale C er booket i " + tider[tid])
+						if (booking == "Lokale C er booket i " + tider[tid] + " på " + dage[dag])
 						{
 							lokaleC = true;
 						}
