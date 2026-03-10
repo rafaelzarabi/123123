@@ -85,15 +85,16 @@ namespace _123123
 
 					string statusB;
 					if (lokaleB == true)
-						statusB = "Reserveret af:";
+						statusB = booking._NameOfTheBooker;
 					else
 						statusB = "Ledig";
 
 					string statusC;
 					if (lokaleC == true)
-						statusC = "Reserveret af:";
+						statusC = booking._NameOfTheBooker;
 					else
 						statusC = "Ledig";
+
 
 					Console.WriteLine(tider[tid].PadRight(19) + statusA.PadRight(19) + statusB.PadRight(19) + statusC);
 				}
