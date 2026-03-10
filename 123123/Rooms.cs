@@ -32,7 +32,7 @@ namespace _123123
         }
 
 		public static void LokaleStatus()
-        {/*
+        {
 
 			string[] tider = { "Morgen", "Formiddag", "Eftermiddag" };
 			string[] dage = { "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag" };
@@ -55,7 +55,7 @@ namespace _123123
 					bool lokaleA = false;
 					bool lokaleB = false;
 					bool lokaleC = false;
-					/*
+					
 					foreach (string booking in Booking.bookings)
 					{
 						if (booking == "Lokale A er booket i " + tider[tid])

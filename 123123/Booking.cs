@@ -92,7 +92,7 @@ namespace _123123
 
         public void Mariebook()
         {
-            / string så vi kan sætte hvem der har
+            // string så vi kan sætte hvem der har
             Console.WriteLine("Hvad er navnet på mødeansvarlige");
             string meeting = Console.ReadLine();
 
