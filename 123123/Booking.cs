@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
 namespace _123123
@@ -12,7 +13,7 @@ namespace _123123
         public int _TimeSlot { get; private set; }
 
 
-        public static List<Booking> bookings = new List<Booking>();
+        public static List<string> bookings = new List<string>();
         List<Rooms> rooms = Rooms.GetLokaler();
 
 
@@ -31,6 +32,7 @@ namespace _123123
             string NameOfTheBooker = "";
             string Roomname = "";
             int Timeslot = 0;
+
             foreach (var rooms in Rooms.GetLokaler())
             {
                 Console.WriteLine($"Lokale: {rooms.Name}. Antal siddepladser: {rooms.SeatsAmount}. Har rummet en projektor? {rooms.HasProjector}. Har rummet et Whiteboard? {rooms.HasWhiteboard}");
@@ -64,158 +66,110 @@ namespace _123123
 
             }
 
+			// Vælg dag
+			Console.Clear();
+			Console.WriteLine("Vælg dag:");
+			Console.WriteLine("1) Mandag");
+			Console.WriteLine("2) Tirsdag");
+			Console.WriteLine("3) Onsdag");
+			Console.WriteLine("4) Torsdag");
+			Console.WriteLine("5) Fredag");
 
-        
-        }
+			string dagInput = Console.ReadLine();
+			string valgtDag = "";
 
+			switch (dagInput)
+			{
+				case "1":
+					valgtDag = "Mandag";
+					break;
+				case "2":
+					valgtDag = "Tirsdag";
+					break;
+				case "3":
+					valgtDag = "Onsdag";
+					break;
+				case "4":
+					valgtDag = "Torsdag";
+					break;
+				case "5":
+					valgtDag = "Fredag";
+					break;
 
-        public void Mariebook()
-        {
-            // string så vi kan sætte hvem der har
-            Console.WriteLine("Hvad er navnet på mødeansvarlige");
-            string meeting = Console.ReadLine();
+				default:
+					Console.WriteLine("Ugyldigt valg");
+					Console.ReadKey();
+					return;
+			}
 
-            //Vælg lokale
-            Console.WriteLine("Vælg lokale:");
-            Console.WriteLine("1) Lokale A");
-            Console.WriteLine("2) Lokale B");
-            Console.WriteLine("3) Lokale C");
+			// Vælg tidsrum
+			Console.Clear();
+			Console.WriteLine("Vælg tidsrum:");
+			Console.WriteLine("1) Morgen      08:00 - 10:00");
+			Console.WriteLine("2) Formiddag   10:00 - 12:00");
+			Console.WriteLine("3) Eftermiddage 12:00 - 14:00");
 
+			string timeInput = Console.ReadLine();
+			string timeSlot = "";
 
-            string roomInput = Console.ReadLine();
-            string valgtLokale = "";
+			switch (timeInput)
+			{
+				case "1":
+					timeSlot = "Morgen";
+					break;
+				case "2":
+					timeSlot = "Formiddag";
+					break;
+				case "3":
+					timeSlot = "Eftermiddag";
+					break;
 
-            switch (roomInput)
-            {
-                case "1":
-                    valgtLokale = "A";
-                    break;
+				default:
+					Console.WriteLine("Ugyldigt valg");
+					Console.ReadKey();
+					return;
+			}
 
-                case "2":
-                    valgtLokale = "B";
-                    break;
+			string bookingText = $"Lokale {Roomname} er booket {timeSlot}, {valgtDag}";
 
-                case "3":
-                    valgtLokale = "C";
-                    break;
+			// Bekræft booking
 
-                default:
-                    Console.WriteLine("Ugyldigt valg");
-                    Console.ReadKey();
-                    return;
-            }
+			Console.Clear();
+			Console.WriteLine("Bekræft booking:");
+			Console.WriteLine(bookingText);
 
-            // Vælg dag
-            Console.Clear();
-            Console.WriteLine("Vælg dag:");
-            Console.WriteLine("1) Mandag");
-            Console.WriteLine("2) Tirsdag");
-            Console.WriteLine("3) Onsdag");
-            Console.WriteLine("4) Torsdag");
-            Console.WriteLine("5) Fredag");
+			Console.WriteLine();
 
-            string dagInput = Console.ReadLine();
-            string valgtDag = "";
+			Console.WriteLine("1) Bekræft");
+			Console.WriteLine("2) Annuller");
 
-            switch (dagInput)
-            {
-                case "1":
-                    valgtDag = "Mandag";
-                    break;
-                case "2":
-                    valgtDag = "Tirsdag";
-                    break;
-                case "3":
-                    valgtDag = "Onsdag";
-                    break;
-                case "4":
-                    valgtDag = "Torsdag";
-                    break;
-                case "5":
-                    valgtDag = "Fredag";
-                    break;
-
-                default:
-                    Console.WriteLine("Ugyldigt valg");
-                    Console.ReadKey();
-                    return;
-            }
-
-            // Vælg tidsrum
-            Console.Clear();
-            Console.WriteLine("Vælg tidsrum:");
-            Console.WriteLine("1) Morgen      08:00 - 10:00");
-            Console.WriteLine("2) Formiddag   10:00 - 12:00");
-            Console.WriteLine("3) Eftermiddag 12:00 - 14:00");
-
-            string timeInput = Console.ReadLine();
-            string timeSlot = "";
-
-            switch (timeInput)
-            {
-                case "1":
-                    timeSlot = "Morgen";
-                    break;
-                case "2":
-                    timeSlot = "Formiddag";
-                    break;
-                case "3":
-                    timeSlot = "Eftermiddag";
-                    break;
-
-                default:
-                    Console.WriteLine("Ugyldigt valg");
-                    Console.ReadKey();
-                    return;
-            }
-
-            string bookingText = $"Lokale {valgtLokale} er booket i {timeSlot} på {valgtDag}";
-
-            // Bekræft booking
-
-            Console.Clear();
-            Console.WriteLine("Bekræft booking:");
-            Console.WriteLine(bookingText);
-
-            Console.WriteLine();
-
-            Console.WriteLine("1) Bekræft");
-            Console.WriteLine("2) Annuller");
-
-            string confirm = Console.ReadLine();
+			string confirm = Console.ReadLine();
 
 
-            if (confirm == "1")
-            {
+			if (confirm == "1")
+			{
 
                 if (bookings.Contains(bookingText))
-                {
-                    Console.Clear();
-                    Console.WriteLine("Dette lokale er allerede booket på det tidspunkt.");
-                }
+				{
+					Console.Clear();
+					Console.WriteLine("Dette lokale er allerede booket på det tidspunkt.");
+				}
 
-                else
-                {
-                    bookings.Add(bookingText);
+				else
+				{
+					bookings.Add(bookingText);
 
-                    Console.Clear();
-                    Console.WriteLine("Booking gennemført!");
+					Console.Clear();
+					Console.WriteLine("Booking gennemført!");
 
-                    Console.WriteLine(bookingText);
-                }
-            }
+					Console.WriteLine(bookingText);
+				}
+			}
 
-            Console.WriteLine("Tryk på en tast for at fortsætte...");
-            Console.ReadKey();
-        }
+			Console.WriteLine("Tryk på en tast for at fortsætte...");
+			Console.ReadKey();
 
-
-
-
-      
-
-
-
+		} 
 
 
 
