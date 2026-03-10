@@ -27,9 +27,10 @@ namespace _123123
 
         public void BookRoomLangberg()
         {
-            string NameOfTheBooker;
-            string Roomname;
-            int Timeslot;
+            List<Rooms> lokaler = Rooms.GetLokaler();
+            string NameOfTheBooker = "";
+            string Roomname = "";
+            int Timeslot = 0;
             foreach (var rooms in Rooms.GetLokaler())
             {
                 Console.WriteLine($"Lokale: {rooms.Name}. Antal siddepladser: {rooms.SeatsAmount}. Har rummet en projektor? {rooms.HasProjector}. Har rummet et Whiteboard? {rooms.HasWhiteboard}");
@@ -44,14 +45,27 @@ namespace _123123
             Console.WriteLine("3) lokale c ");
 
             Roomname = Console.ReadLine();
-            
-            
 
 
-            
-            
-            
-            
+            switch (Roomname)
+            {
+                case "1":
+                    Roomname = lokaler[0].Name;
+                    break;
+     
+                case "2":
+                    Roomname = lokaler[1].Name;
+
+                    break;
+                case "3":
+                    Roomname = lokaler[2].Name;
+
+                    break;
+
+            }
+
+            Console.WriteLine(name);
+                
             switch (Timeslot)
             {
                 case 1:
