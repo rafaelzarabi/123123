@@ -33,6 +33,7 @@ namespace _123123
 
 		public static void LokaleStatus()
         {
+			Booking booking = new Booking("", "", 0);
 
 			string[] tider = { "Morgen", "Formiddag", "Eftermiddag" };
 			string[] dage = { "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag" };
@@ -76,7 +77,8 @@ namespace _123123
 					
             string statusA;
 					if (lokaleA == true)
-						statusA = "Reserveret af: ";
+						statusA = booking._NameOfTheBooker;
+
 					else
 						statusA = "Ledig";
 

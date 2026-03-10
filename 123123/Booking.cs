@@ -40,7 +40,7 @@ namespace _123123
             }
             Console.WriteLine("");
             Console.WriteLine("Indtast navnet på facilitatoren af mødet ");
-            NameOfTheBooker = Console.ReadLine().ToLower().Trim();
+            _NameOfTheBooker = Console.ReadLine().ToLower().Trim();
 
             Console.WriteLine("Vælg det lokale du gerne vil rersaver ");
             Console.WriteLine("1) lokale A ");
