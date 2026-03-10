@@ -27,7 +27,7 @@ namespace _123123
             _TimeSlot = Timeslot;
         }
 
-        public void BookRoomLangberg()
+        public void BookRoom()
         {
             List<Rooms> lokaler = Rooms.GetLokaler();
             string NameOfTheBooker = "";
