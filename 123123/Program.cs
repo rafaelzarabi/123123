@@ -20,8 +20,8 @@ namespace _123123
             {
                 while (LogIn == false)
                 {
-                    booking.BookRoomLangberg();
-                    Console.ReadKey();
+                  
+                    
                     Console.Clear();
                     LogIn = menu.LogInMenuBool();   // Vi har en return stafet med bool fra loginBool()-->loginMenuBool-->Main
                 }
