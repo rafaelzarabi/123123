@@ -33,81 +33,54 @@ namespace _123123
 
 		public static void LokaleStatus()
 		{
-			Booking booking = new Booking();
-
 			string[] tider = { "Morgen", "Formiddag", "Eftermiddag" };
 			string[] dage = { "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag" };
-
 
 			List<Rooms> rooms = GetLokaler();
 
 			for (int dag = 0; dag < dage.Length; dag++)
 			{
-
-
 				Console.WriteLine($"=== {dage[dag]} ===");
 				Console.WriteLine("========================================================================".PadLeft(50));
 				Console.WriteLine("             |      Lokale A     |     Lokale B     |     Lokale C     |".PadLeft(50));
 				Console.WriteLine("========================================================================".PadLeft(50));
 
-
 				for (int tid = 0; tid < tider.Length; tid++)
 				{
-					bool lokaleA = false;
-					bool lokaleB = false;
-					bool lokaleC = false;
+					TimeSlot currentSlot = (TimeSlot)tid;
 
-					foreach (string bookingx in Booking.bookings)
+					// Default all rooms to "Ledig"
+					string statusA = "Ledig";
+					string statusB = "Ledig";
+					string statusC = "Ledig";
+
+					// Look for bookings at this day/time
+					foreach (var booking in Booking.bookings)
 					{
-						// Checker dag og tid ;
-						if (bookingx.Contains("Lokale A er booket " + tider[tid]) &&
-							bookingx.Contains(dage[dag]))
-							lokaleA = true;
-
-
-						if (bookingx.Contains("Lokale B er booket " + tider[tid]) &&
-							bookingx.Contains(dage[dag]))
-							lokaleB = true;
-
-
-						if (bookingx.Contains("Lokale C er booket " + tider[tid]) &&
-							bookingx.Contains(dage[dag]))
-							lokaleC = true;
+						if (booking.Day == (Day)dag && booking._TimeSlot == currentSlot)
+						{
+							switch (booking._roomname)
+							{
+								case "A":
+									statusA = booking._NameOfTheBooker;
+									break;
+								case "B":
+									statusB = booking._NameOfTheBooker;
+									break;
+								case "C":
+									statusC = booking._NameOfTheBooker;
+									break;
+							}
+						}
 					}
-
-
-					string statusA;
-					if (lokaleA == true)
-						statusA = booking._NameOfTheBooker;
-
-					else
-						statusA = "Ledig";
-
-					string statusB;
-					if (lokaleB == true)
-						statusB = booking._NameOfTheBooker;
-					else
-						statusB = "Ledig";
-
-					string statusC;
-					if (lokaleC == true)
-						statusC = booking._NameOfTheBooker;
-					else
-						statusC = "Ledig";
-
 
 					Console.WriteLine(tider[tid].PadRight(19) + statusA.PadRight(19) + statusB.PadRight(19) + statusC);
 				}
-
 				Console.WriteLine();
-
-
 			}
 
 			Console.WriteLine("Tryk på en tast for at gå tilbage til Hovedmenu");
 			Console.ReadKey();
-
-
 		}
 	}
 }

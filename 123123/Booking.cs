@@ -7,21 +7,20 @@ namespace _123123
 {
 	internal class Booking
 	{
-
+		
 		// Hvad indeholder en booking? Den er tilknyttet en USER, har et navn og et tidspunkt på dagen 1, 2, 3 = morgen, middag, eftermiddag
 		public string _NameOfTheBooker { get; private set; }
 		public string _roomname { get; private set; }
-		public int _TimeSlot { get; private set; }
+		public TimeSlot _TimeSlot { get; private set; }
+		public Day Day { get; private set; }
 
-
-		public static List<string> bookings = new List<string>();
-		List<Rooms> rooms = Rooms.GetLokaler();
-
-
+		//laver en liste af alle bookings
+		public static List<Booking> bookings = new List<Booking>();
 
 		public void BookRoom()
 		{
 			List<Rooms> lokaler = Rooms.GetLokaler();
+
 			string NameOfTheBooker = "";
 			string Roomname = "";
 			int Timeslot = 0;
@@ -30,29 +29,33 @@ namespace _123123
 			{
 				Console.WriteLine($"Lokale: {rooms.Name}. Antal siddepladser: {rooms.SeatsAmount}. Har rummet en projektor? {rooms.HasProjector}. Har rummet et Whiteboard? {rooms.HasWhiteboard}");
 			}
+
+
 			Console.WriteLine("");
-			Console.WriteLine("Indtast navnet på facilitatoren af mødet ");
-			_NameOfTheBooker = Console.ReadLine().ToLower().Trim();
+
+			Console.WriteLine("Indtast navnet på facilitatoren af mødet:");
+			_NameOfTheBooker = Console.ReadLine().Trim();
+
 
 			Console.WriteLine("Vælg det lokale du gerne vil rersaver ");
 			Console.WriteLine("1) lokale A ");
 			Console.WriteLine("2) lokale b ");
 			Console.WriteLine("3) lokale c ");
 
-			_roomname = Console.ReadLine();
+			string roomname = Console.ReadLine();
 
-			switch (Roomname)
+			switch (roomname)
 			{
 				case "1":
-					Roomname = lokaler[0].Name;
+					_roomname = lokaler[0].Name;
 					break;
 
 				case "2":
-					Roomname = lokaler[1].Name;
+					_roomname = lokaler[1].Name;
 
 					break;
 				case "3":
-					Roomname = lokaler[2].Name;
+					_roomname = lokaler[2].Name;
 
 					break;
 
@@ -80,23 +83,24 @@ namespace _123123
 			switch (dagInput)
 			{
 				case "1":
-					valgtDag = Day.Mandag;
+					
+					Day = Day.Mandag;
 					break;
 
 				case "2":
-					valgtDag = Day.Tirsdag;
+					Day = Day.Tirsdag;
 					break;
 
 				case "3":
-					valgtDag = Day.Onsdag;
+					Day = Day.Onsdag;
 					break;
 
 				case "4":
-					valgtDag = Day.Torsdag;
+					Day = Day.Torsdag;
 					break;
 
 				case "5":
-					valgtDag = Day.Fredag;
+					Day = Day.Fredag;
 					break;
 
 				default:
@@ -118,15 +122,15 @@ namespace _123123
 			switch (timeInput)
 			{
 				case "1":
-					timeSlot = TimeSlot.Morgen;
+					_TimeSlot = TimeSlot.Morgen;
 					break;
 
 				case "2":
-					timeSlot = TimeSlot.Formiddag;
+					_TimeSlot = TimeSlot.Formiddag;
 					break;
 
 				case "3":
-					timeSlot = TimeSlot.Eftermiddag;
+					_TimeSlot = TimeSlot.Eftermiddag;
 					break;
 
 				default:
@@ -137,7 +141,7 @@ namespace _123123
 
 			}
 
-			string bookingText = $"Lokale {Roomname} er booket {timeSlot}, {valgtDag}";
+			string bookingText = ($"Lokale {_roomname} er booket {_TimeSlot}, {Day} af {_NameOfTheBooker}");
 
 			// Bekræft booking
 
@@ -153,32 +157,27 @@ namespace _123123
 			string confirm = Console.ReadLine();
 
 
-			if (confirm == "1")
+			bool alreadyBooked = bookings.Exists(b => b._roomname == _roomname && b.Day == Day && b._TimeSlot == _TimeSlot); //.Exists returnerer hvis én ting er korrekt
+
+			if (alreadyBooked)
 			{
+				Console.Clear();
+				Console.WriteLine("Dette lokale er allerede booket på det tidspunkt.");
+			}
 
-				if (bookings.Contains(bookingText))
-				{
-					Console.Clear();
-					Console.WriteLine("Dette lokale er allerede booket på det tidspunkt.");
-				}
-
-				else
-				{
-					bookings.Add(bookingText);
-
-					Console.Clear();
-					Console.WriteLine("Booking gennemført!");
-
-					Console.WriteLine(bookingText);
-				}
+			else
+			{
+				bookings.Add(this); //tilføjer booking-objektet til liste
+				Console.Clear();
+				Console.WriteLine("Booking gennemført!");
+				Console.WriteLine(bookingText);
 			}
 
 			Console.WriteLine("Tryk på en tast for at fortsætte...");
 			Console.ReadKey();
 
+
 		}
-
-
 
 
 
