@@ -28,7 +28,81 @@ namespace _123123
             
             return rooms; 
         }
-    }
+
+		public static void LokaleStatus()
+		{
+
+			string[] tider = { "Morgen", "Formiddag", "Eftermiddag" };
+			string[] dage = { "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag" };
+
+
+			List <Rooms> rooms =  GetLokaler();
+
+			for (int dag = 0; dag < dage.Length; dag++)
+			{
+
+
+				Console.WriteLine($"=== {dage[dag]} ===");
+				Console.WriteLine("========================================================================".PadLeft(50));
+				Console.WriteLine("             |      Lokale A     |     Lokale B     |     Lokale C     |".PadLeft(50));
+				Console.WriteLine("========================================================================".PadLeft(50));
+
+
+				for (int tid = 0; tid < tider.Length; tid++)
+				{
+					bool lokaleA = false;
+					bool lokaleB = false;
+					bool lokaleC = false;
+
+					foreach (string booking in Booking.bookings)
+					{
+						if (booking == "Lokale A er booket i " + tider[tid])
+						{
+							lokaleA = true;
+						}
+
+						if (booking == "Lokale B er booket i " + tider[tid])
+						{
+							lokaleB = true;
+						}
+
+						if (booking == "Lokale C er booket i " + tider[tid])
+						{
+							lokaleC = true;
+						}
+					}
+
+					string statusA;
+					if (lokaleA == true)
+						statusA = "Reserveret";
+					else
+						statusA = "Ledig";
+
+					string statusB;
+					if (lokaleB == true)
+						statusB = "Reserveret";
+					else
+						statusB = "Ledig";
+
+					string statusC;
+					if (lokaleC == true)
+						statusC = "Reserveret";
+					else
+						statusC = "Ledig";
+
+					Console.WriteLine(tider[tid].PadRight(19) + statusA.PadRight(19) + statusB.PadRight(19) + statusC);
+				}
+
+				Console.WriteLine();
+
+
+			}
+
+			Console.WriteLine("Tryk på en tast for at gå tilbage til Hovedmenu");
+			Console.ReadKey();
+
+		}
+	}
 }
         
       
