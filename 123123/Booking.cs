@@ -5,7 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace _123123
 {
-    internal class Booking
+    internal class Bookingxxxx
     {
 
         // Hvad indeholder en booking? Den er tilknyttet en USER, har et navn og et tidspunkt på dagen 1, 2, 3 = morgen, middag, eftermiddag
