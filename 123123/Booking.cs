@@ -74,7 +74,7 @@ namespace _123123
             switch (Timeslot)
             {
                 case 1:
-                    Timeslot= 
+                    Timeslot = 
 
                     break;
                 case 2:
