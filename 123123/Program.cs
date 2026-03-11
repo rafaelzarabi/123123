@@ -8,6 +8,7 @@ namespace _123123
     {
         static void Main(string[] args)
         {
+
             // kalder klassen, så jeg kan bruge den i main
             Menu menu = new Menu();
             UserService userService = new UserService();
@@ -17,12 +18,13 @@ namespace _123123
 
             while (ProgramRunning == true)
             {
+                /*
                 while (LogIn == false)
                 {
                     Console.Clear();
                     LogIn = menu.LogInMenuBool();   // Vi har en return stafet med bool fra loginBool()-->loginMenuBool-->Main
                 }
-
+                */
                 Console.Clear();
                 LogIn = menu.MainMenuBool();      // Vi har en return stafet med bool fra  LogOut()-->mainMenu()-->Main()    
             }
@@ -30,7 +32,7 @@ namespace _123123
         
         public void CloseProgram()
         {
-            Console.WriteLine("Er du sikker på du vil afslutte programmet?\n At afslutte programmet fjerne af indtastet data");
+            Console.WriteLine("Er du sikker på du vil afslutte programmet? At afslutte programmet fjerne af indtastet data");
             Console.WriteLine("1) ja");
             Console.WriteLine("2) Nej");
 

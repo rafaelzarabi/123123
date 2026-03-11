@@ -17,13 +17,22 @@ namespace _123123
 		//laver en liste af alle bookings
 		public static List<Booking> bookings = new List<Booking>();
 
+		public Booking()
+		{
+		}
+
+		public Booking(string nameofbooker, string roomname, Day day, TimeSlot timeslot) //constructor
+		{
+			_NameOfTheBooker = nameofbooker;
+			_roomname = roomname;
+			Day = day;
+			_TimeSlot = timeslot;
+		}
+
 		public void BookRoom()
 		{
 			List<Rooms> lokaler = Rooms.GetLokaler();
 
-			string NameOfTheBooker = "";
-			string Roomname = "";
-			int Timeslot = 0;
 
 			foreach (var rooms in Rooms.GetLokaler())
 			{
@@ -166,9 +175,12 @@ namespace _123123
 				Console.WriteLine("Dette lokale er allerede booket på det tidspunkt.");
 			}
 
+
 			else
 			{
-				bookings.Add(this); //tilføjer booking-objektet til liste
+				Booking newBooking = new Booking(_NameOfTheBooker, _roomname, Day, _TimeSlot);
+
+				bookings.Add(newBooking); //tilføher bookings til list
 				Console.Clear();
 				Console.WriteLine("Booking gennemført!");
 				Console.WriteLine(bookingText);
@@ -178,6 +190,87 @@ namespace _123123
 			Console.ReadKey();
 
 
+		}
+
+		public static void RemoveBooking()
+		{
+			Console.Clear();
+
+			Console.WriteLine("===============================================");
+			Console.WriteLine("                FJERN BOOKING                  ");
+			Console.WriteLine("===============================================");
+
+			if (bookings.Count == 0)
+			{
+				Console.WriteLine("Der findes íngen bookings.");
+				Console.WriteLine("Tryk på en tast for at gå tilbage...");
+				Console.ReadKey();
+				return;
+			}
+
+
+			Console.WriteLine("Liste over nuværende bookings:");
+			Console.WriteLine();
+
+			int nr = 1;
+
+			foreach (var booking in bookings)
+			{
+				Console.WriteLine($"{nr}: Lokale {booking._roomname} er booket {booking.Day}  {booking._TimeSlot} af {booking._NameOfTheBooker}");
+				nr++;
+			}
+
+			Console.WriteLine();
+			Console.WriteLine("Indtast nummeret på den booking du vil fjerne:");
+
+			string removenr = Console.ReadLine();
+
+			int remove;
+
+			if (int.TryParse(removenr, out remove))
+			{
+				if (remove >= 1 && remove <= bookings.Count)
+				{
+					Booking valgtBooking = bookings[remove - 1];
+
+					Console.Clear();
+					Console.WriteLine("Du har valgt at fjerne følgende booking:");
+					Console.WriteLine($"Lokale {valgtBooking._roomname} der er booket {valgtBooking.Day} {valgtBooking._TimeSlot} af: {valgtBooking._NameOfTheBooker}");
+					Console.WriteLine();
+					Console.WriteLine("1) Bekræft afbooking");
+					Console.WriteLine("2) Annuller");
+
+					string confirm = Console.ReadLine();
+
+					switch (confirm)
+					{
+						case "1":
+							bookings.Remove(valgtBooking);
+							Console.WriteLine("Bookingen er blevet afbooket.");
+							break;
+
+						case "2":
+							Console.WriteLine("afbookning annulleret.");
+							break;
+
+						default:
+							Console.WriteLine("Ugyldigt valg.");
+							break;
+					}
+				}
+				else
+				{
+					Console.WriteLine("Ugyldigt nummer.");
+				}
+			}
+			else
+			{
+				Console.WriteLine("Ugyldigt input.");
+			}
+
+			Console.WriteLine();
+			Console.WriteLine("Tryk på en tast for at fortsætte...");
+			Console.ReadKey();
 		}
 
 

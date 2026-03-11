@@ -9,10 +9,9 @@ namespace _123123
     {
         UserService userService = new UserService();
         Program program = new Program();
-        Booking booking = new Booking();
 
 
-        public bool LogInMenuBool()
+        /*public bool LogInMenuBool()
       
 
 
@@ -48,6 +47,7 @@ namespace _123123
             return false;
         }
 
+        */
         public bool MainMenuBool()
         {
             Console.Clear();
@@ -58,6 +58,7 @@ namespace _123123
             Console.WriteLine("1)  Status på lokaler");
             Console.WriteLine("2)  Lokale information");
             Console.WriteLine("3)  Book et lokale");
+            Console.WriteLine("4)  Fjerne bookings");
             Console.WriteLine("4)  Log ud");
 
             ConsoleKeyInfo keyinfo = Console.ReadKey();
@@ -71,18 +72,35 @@ namespace _123123
 
                 case '2':
                     Console.Clear();
-                    Rooms.GetLokaler();
-                    break;
+
+					foreach (var rooms in Rooms.GetLokaler())
+					{
+						Console.WriteLine($"Lokale: {rooms.Name}. Antal siddepladser: {rooms.SeatsAmount}. Har rummet en projektor? {rooms.HasProjector}. Har rummet et Whiteboard? {rooms.HasWhiteboard}");
+					}
+                    Console.ReadKey();
+
+					break;
 
                 case '3':
                     Console.Clear();
-                    booking.BookRoom();
-                    break;
-                case '4':
+					new Booking().BookRoom();
+					break;
+
+				case '4':
+					Console.Clear();
+                    Booking.RemoveBooking();
+					break;
+
+				case '5':
                     Console.Clear();
                     return userService.LogOutBool();
-                    
-            }
+
+				default:
+					Console.WriteLine("Ugyldigt valg");
+					Console.ReadKey();
+					return false;
+
+			}
             return true;
         } 
     }
