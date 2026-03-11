@@ -9,28 +9,24 @@ namespace _123123
         static void Main(string[] args)
         {
             
-            Menu menu = new Menu();
+            
             UserService userService = new UserService();
 
             Rooms lokale1 = new Rooms("A", 70, true, true);
             Rooms lokale2 = new Rooms("B", 40, true, false);
             Rooms lokale3 = new Rooms("C", 20, false, true);
 
-            Booking booking1 = new Booking("mandag", "morgen", null, null);
-            Booking booking2 = new Booking("mandag", "Formiddag", null, null);
-            Booking booking3 = new Booking("mandag", "Eftermiddag", null, null);
-            Booking booking4 = new Booking("tirsdag", "morgen", null, null);
-            Booking booking5 = new Booking("tirsdag", "formiddag", null, null);
-            Booking booking6 = new Booking("tirsdag", "eftermiddag", null, null);
-            Booking booking7 = new Booking("onsdag", "morgen", null, null);
-            Booking booking8 = new Booking("onsdag", "Formiddag", null, null);
-            Booking booking9 = new Booking("onsdag", "Eftermiddag", null, null);
-            Booking booking10 = new Booking("torsdag", "morgen", null, null);
-            Booking booking11 = new Booking("torsdag", "Formiddag", null, null);
-            Booking booking12 = new Booking("torsdag", "Eftermiddag", null, null);
-            Booking booking13 = new Booking("fredag", "morgen", null, null);
-            Booking booking14 = new Booking("fredag", "Formiddag", null, null);
-            Booking booking15 = new Booking("fredag", "Eftermiddag", null, null);
+            List<Booking> allBookings = new List<Booking>();
+            string[] days = { "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag" };
+            string[] times = { "Morgen", "Formiddag", "Eftermiddag" };
+
+            foreach (string day in days)
+            {
+                foreach (string time in times)
+                {
+                    allBookings.Add(new Booking(day, time, null, lokale1));
+                }
+            }
 
             User user = userService.CurrentUser;
 
@@ -62,13 +58,14 @@ namespace _123123
                     Console.WriteLine("3)  Se alle registeret brugere");
                     Console.WriteLine("4)  Afslut programmet");
 
-                    ConsoleKeyInfo keyinfo = Console.ReadKey();
+                    ConsoleKeyInfo keyinfox = Console.ReadKey();
 
-                    switch (keyinfo.KeyChar)
+                    switch (keyinfox.KeyChar)
                     {
                         case '1':
                             Console.Clear();
-                            return userService.LoginBool();
+                           userService.LoginBool();
+                            break;
                         case '2':
                             Console.Clear();
                             userService.RegisterUser();
@@ -82,7 +79,7 @@ namespace _123123
                             CloseProgram();
                             break;
                     }
-                    return false;
+                   
                 }
 
                 Console.Clear();
@@ -116,42 +113,15 @@ namespace _123123
                         break;
                     case '4':
                         Console.Clear();
-                        return userService.LogOutBool();
+                        userService.LogOutBool();
+                        break;
 
                 }
-                return true;      // Vi har en return stafet med bool fra  LogOut()-->mainMenu()-->Main()    
+                        
             }
         }
-        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public void CloseProgram()
+        public static void CloseProgram()
         {
             Console.WriteLine("Er du sikker på du vil afslutte programmet?\n At afslutte programmet fjerne af indtastet data");
             Console.WriteLine("1) ja");
