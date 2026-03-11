@@ -32,15 +32,14 @@ namespace _123123
         public void VisStatus()
         {
             Console.WriteLine($"Status for lokale: {Name}");
-            // Her kan du løbe dine tider igennem og tjekke 
-            // om de findes i _roomBookings
+            
         }
 
 
 
         public void LokaleStatus(string dag)
         {
-            // Vi definerer de faste tidspunkter
+            
             string[] tidsrum = { "Morgen", "Formiddag", "Eftermiddag" };
 
             Console.WriteLine($"\n--- Status for {Name} ({dag}) ---");
