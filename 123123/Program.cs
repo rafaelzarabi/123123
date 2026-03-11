@@ -28,20 +28,7 @@ namespace _123123
                 }
             }
 
-            User user = userService.CurrentUser;
-
-            Booking booking = new Booking(
-                "Mandag",
-                "Morgen",
-                user,
-                lokale1
-            );
-
-            lokale1.TilføjBooking(booking);
-
-
-
-
+         
             bool ProgramRunning = true;
             bool LogIn = false;
 
@@ -64,7 +51,7 @@ namespace _123123
                     {
                         case '1':
                             Console.Clear();
-                           userService.LoginBool();
+                            LogIn = userService.LoginBool();
                             break;
                         case '2':
                             Console.Clear();
@@ -91,7 +78,8 @@ namespace _123123
                 Console.WriteLine("1)  Status på lokaler");
                 Console.WriteLine("2)  Lokale information");
                 Console.WriteLine("3)  Book et lokale");
-                Console.WriteLine("4)  Log ud");
+                Console.WriteLine("4)  Fjern en bookning");
+                Console.WriteLine("5)  Log ud");
 
                 ConsoleKeyInfo keyinfo = Console.ReadKey();
 
@@ -99,7 +87,20 @@ namespace _123123
                 {
                     case '1':
                         Console.Clear();
+                        foreach (Booking b in allBookings)
+                        {
+                            if (b.BookedBy == null)
+                            {
+                                Console.WriteLine($"{b.Day} {b.TimeSlot} - LEDIG");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"{b.Day} {b.TimeSlot} - OPTAGET af {b.BookedBy._Firstname}");
+                            }
+                        }
 
+                        Console.ReadKey();
+                        
                         break;
 
                     case '2':
@@ -109,15 +110,69 @@ namespace _123123
 
                     case '3':
                         Console.Clear();
+                        Console.WriteLine("Indtast dag:");
+                        string day = Console.ReadLine();
 
+                        Console.WriteLine("Indtast tidspunkt:");
+                        string time = Console.ReadLine();
+
+                        foreach (Booking b in allBookings)
+                        {
+                            if (b.Day.ToLower() == day.ToLower() &&
+                                b.TimeSlot.ToLower() == time.ToLower())
+                            {
+                                if (b.BookedBy == null)
+                                {
+                                    b.BookedBy = userService.CurrentUser;
+                                    Console.WriteLine("Lokalet er nu booket");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Tiden er allerede optaget");
+                                }
+                            }
+                        }
+                        Console.ReadKey();
                         break;
                     case '4':
                         Console.Clear();
-                        userService.LogOutBool();
+
+                        Console.WriteLine("Hvilken dag vil du fjerne booking fra?");
+                        string dag = Console.ReadLine();
+
+                        Console.WriteLine("Hvilket tidspunkt?");
+                        string tid = Console.ReadLine();
+
+                        foreach (Booking booking in allBookings)
+                        {
+                            bool sammeDag = booking.Day.ToLower() == dag.ToLower();
+                            bool sammeTid = booking.TimeSlot.ToLower() == tid.ToLower();
+
+                            if (sammeDag && sammeTid)
+                            {
+                                if (booking.BookedBy == null)
+                                {
+                                    Console.WriteLine("Der er ingen booking på dette tidspunkt");
+                                }
+                                else
+                                {
+                                    booking.BookedBy = null;
+
+                                    Console.WriteLine("Bookingen er nu fjernet");
+                                }
+                            }
+                        }
+
+                        Console.ReadKey();
+
+                        break;
+                    case '5':
+                        Console.Clear();
+                        LogIn = userService.LogOutBool();
                         break;
 
                 }
-                        
+
             }
         }
 
@@ -139,13 +194,7 @@ namespace _123123
             
 
 
-            /*//LOKALE INFO - FRA LOKALER.CS KLASSE
-            List<Rooms> rooms = ne 
-
-            foreach (var room in rooms)
-            {
-                Console.WriteLine($"Lokale {room.Name} ({room.SeatsAmount} pladser) - {(room.HasWhiteboard ? "Whiteboard" : "Ingen whiteboard")} - {(room.HasProjector ? "Projektor" : "Ingen projektor")}");
-            }*/
+           
         }
     }
 }
