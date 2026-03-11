@@ -135,36 +135,7 @@ namespace _123123
                         Console.ReadKey();
                         break;
                     case '4':
-                        Console.Clear();
-
-                        Console.WriteLine("Hvilken dag vil du fjerne booking fra?");
-                        string dag = Console.ReadLine();
-
-                        Console.WriteLine("Hvilket tidspunkt?");
-                        string tid = Console.ReadLine();
-
-                        foreach (Booking booking in allBookings)
-                        {
-                            bool sammeDag = booking.Day.ToLower() == dag.ToLower();
-                            bool sammeTid = booking.TimeSlot.ToLower() == tid.ToLower();
-
-                            if (sammeDag && sammeTid)
-                            {
-                                if (booking.BookedBy == null)
-                                {
-                                    Console.WriteLine("Der er ingen booking på dette tidspunkt");
-                                }
-                                else
-                                {
-                                    booking.BookedBy = null;
-
-                                    Console.WriteLine("Bookingen er nu fjernet");
-                                }
-                            }
-                        }
-
-                        Console.ReadKey();
-
+                        FjernEnBooking();
                         break;
                     case '5':
                         Console.Clear();
@@ -182,7 +153,37 @@ namespace _123123
 
 
 
+        public static void FjernEnBooking()
+        {
 
+            Console.WriteLine("Hvilken dag vil du fjerne booking fra?");
+            string dag = Console.ReadLine();
+
+            Console.WriteLine("Hvilket tidspunkt?");
+            string tid = Console.ReadLine();
+
+            foreach (Booking booking in allBookings)
+            {
+                bool sammeDag = booking.Day.ToLower() == dag.ToLower();
+                bool sammeTid = booking.TimeSlot.ToLower() == tid.ToLower();
+
+                if (sammeDag && sammeTid)
+                {
+                    if (booking.BookedBy == null)
+                    {
+                        Console.WriteLine("Der er ingen booking på dette tidspunkt");
+                    }
+                    else
+                    {
+                        booking.BookedBy = null;
+
+                        Console.WriteLine("Bookingen er nu fjernet");
+                    }
+                }
+            }
+
+            Console.ReadKey();
+        }
 
 
 
