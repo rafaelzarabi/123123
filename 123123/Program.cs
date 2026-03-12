@@ -99,7 +99,7 @@ namespace _123123
                         Console.Clear();
                         foreach (var room in rooooms)
                         {
-                            Console.WriteLine($" Navn: {room.Name}. Siddepladser: {room.SeatsAmount}. Projektor? {room.HasProjector} Whiteboard?{room.HasWhiteboard}"); 
+                            Console.WriteLine($" Navn: {room.Name}. Siddepladser: {room.SeatsAmount}. Projektor? {room.HasProjector} Whiteboard? {room.HasWhiteboard}"); 
                         }
 
                         Console.ReadKey();
