@@ -18,6 +18,8 @@ namespace _123123
             rooooms.Add(lokale1);
             rooooms.Add(lokale2);
             rooooms.Add(lokale3);
+            
+            
 
             List<Booking> allBookings = new List<Booking>();
             string[] days = { "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag" };
@@ -99,8 +101,9 @@ namespace _123123
                         Console.Clear();
                         foreach (var room in rooooms)
                         {
-                            Console.WriteLine($" Navn: {room.Name}. Siddepladser: {room.SeatsAmount}. Projektor? {room.HasProjector} Whiteboard? {room.HasWhiteboard}"); 
+                            Console.WriteLine($"{room.Name} ({room.SeatsAmount} pladser) - {(room.HasWhiteboard ? "Whiteboard" : "Ingen whiteboard")} - {(room.HasProjector ? "Projektor" : "Ingen projektor")}");
                         }
+                        
 
                         Console.ReadKey();
                         break;
