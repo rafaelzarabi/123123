@@ -2,7 +2,7 @@
 
 
 // TimeSlot.cs
-namespace _123123
+namespace KontorNordProjekt
 {
     internal enum TimeSlot
     {

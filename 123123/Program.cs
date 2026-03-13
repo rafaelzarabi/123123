@@ -2,7 +2,7 @@
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 
-namespace _123123
+namespace KontorNordProjekt
 {
     internal class Program
     {
