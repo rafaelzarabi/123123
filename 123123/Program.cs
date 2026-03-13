@@ -110,7 +110,7 @@ namespace _123123
                         {
                             if (b.BookedBy == null)
                             {
-                                Console.WriteLine($"| {b.Day} | {b.TimeSlot} | {b.Room.Name} - LEDIG |");
+                                Console.WriteLine($"| {b.Day.PadRight(5)} | {b.TimeSlot.PadRight(5)} | {b.Room.Name.PadRight(5)} - LEDIG |");
                             }
                             else
                             {

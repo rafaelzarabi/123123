@@ -24,17 +24,6 @@ namespace _123123
         }
 
 
-        public void TilføjBooking(Booking booking)
-        {
-            _allBookings.Add(booking);
-        }
-
-        public void VisStatus()
-        {
-            Console.WriteLine($"Status for lokale: {Name}");
-
-        }
-
 
         public static void LokaleStatus(List<Booking> allBookings)
         {
@@ -43,11 +32,11 @@ namespace _123123
             {
                 if (b.BookedBy == null)
                 {
-                    Console.WriteLine($"{b.Day} {b.TimeSlot} {b.Room.Name} - LEDIG");
+                    Console.WriteLine($"| {b.Day.PadRight(10)} | {b.TimeSlot.PadRight(10)} | {b.Room.Name.PadRight(10)} - LEDIG |");
                 }
                 else
                 {
-                    Console.WriteLine($"{b.Day} {b.TimeSlot} - OPTAGET af {b.BookedBy._Firstname}");
+                    Console.WriteLine($"{b.Day.PadRight(10)} {b.TimeSlot.PadRight(10)} - OPTAGET af {b.BookedBy._Firstname.PadRight(10)} ");
                 }
             }
             Console.WriteLine("Tryk enter for at komme tilbage til hovedmenuen");
